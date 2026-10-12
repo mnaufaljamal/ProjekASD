@@ -149,11 +149,29 @@ public class SinglyLinkedList implements LinkedList{
     @Override
     public void printReverse() {
         // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
-        
+        for (int i = size - 1; i >= 0; i--) {
+            System.out.println(get(i));
+        }
     }
     @Override
     public boolean remove(Object targetData) {
         // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+        Node bantu = head;
+        Node prev = null;
+
+        while (bantu != null) {
+            if (bantu.data == targetData) {
+                if (prev == null) {
+                    deleteFirst();
+                } else {
+                    prev.pointer = bantu.pointer;
+                    if (bantu == tail) tail = prev;
+                    size--;
+                } return true;
+            }
+            prev = bantu;
+            bantu = bantu.pointer;
+        }
         return false;
     }
     @Override

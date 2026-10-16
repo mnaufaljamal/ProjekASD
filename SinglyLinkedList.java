@@ -21,27 +21,23 @@ public class SinglyLinkedList implements LinkedList {
     public void addFirst(Object inputData) {
         Node baru = new Node(inputData);
         if (isEmpty()) {
-            head = baru;
             tail = baru;
-            size++;
         } else {
             baru.pointer = head;
-            head = baru;
-            size++;
         }
+        head = baru;
+        size++;
     }
 
     public void addLast(Object inputData) {
         Node baru = new Node(inputData);
         if (isEmpty()) {
-            head = baru;
-            tail = baru;
-            size++;
+        head = baru;
         } else {
-            tail.pointer = baru;
-            tail = baru;
-            size++;
+           tail.pointer = baru;
         }
+        tail = baru;
+        size++;
     }
 
     public void addAfter(int index, Object inputData) {
@@ -145,8 +141,9 @@ public class SinglyLinkedList implements LinkedList {
 
     @Override
     public void printReverse() {
-        for (int i = size - 1; i >= 0; i--) {
-            System.out.println(get(i));
+        Object[] arr = toArray();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.println(arr[i]);
         }
     }
 
